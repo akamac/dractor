@@ -31,7 +31,7 @@ import logging
 import os
 
 # Third party
-import textx.metamodel
+from textx.metamodel import metamodel_from_file
 
 # this project
 import _code_generation.exceptions as my_exceptions
@@ -456,7 +456,7 @@ class MOFParser(object):
     def __init__(self):
         _LOGGER.debug("Load textx metamodel for MOF parsing")
         try:
-            metamodel = textx.metamodel.metamodel_from_file(
+            metamodel = metamodel_from_file(
                 MOFParser.META_MODEL_PATH, classes=MOFParser.META_MODEL_CLASSES)
         except Exception as error:
             raise my_exceptions.CodeGenError("Fatal error loading textx metamodel for MOF parsing",
