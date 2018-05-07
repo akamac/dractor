@@ -1,13 +1,7 @@
-/* ---------------------------------------------------------------------------
- * 	DCIM_HardwareConcreteCollection
- * ---------------------------------------------------------------------------
- */
+// ---------------------------------------------------------------------------
+// 	DCIM_HardwareConcreteCollection
+// ---------------------------------------------------------------------------
+//
 class DCIM_HardwareConcreteCollection : CIM_ConcreteCollection
 { 
-};
-
-instance of DCIM_HardwareConcreteCollection
-{
-	InstanceID="DCIM:Hardware:ConcreteCollection:1";
-	ElementName="Hardware";
 };

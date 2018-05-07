@@ -3,18 +3,3 @@
 // ==================================================================
 class DCIM_CLPSettingData : CIM_CLPSettingData
 { };
-// Instance: DCIM_CLPSettingData for CLP spec default setting
-instance of DCIM_CLPSettingData
-{
-    InstanceID = "clpsetting:1";
-    ElementName = "CLP Default Setting";
-
-    KeepTime = 300;
-    WaitBehavior = false;
-    OutputFormat = 2;
-    OutputVerbosity = 3;
-    OutputLanguage = "eng";
-    OutputPosition = 2;
-    OutputOrder = 2;
-    OutputCount = 4294967295;
-};
