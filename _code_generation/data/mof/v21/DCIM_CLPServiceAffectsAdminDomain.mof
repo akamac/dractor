@@ -1,0 +1,3 @@
+// class: clpsvc1 => DCIM_CLPServiceAffectsAdminDomain => domain1
+class DCIM_CLPServiceAffectsAdminDomain : CIM_ServiceAffectsElement
+{ };

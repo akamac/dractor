@@ -27,7 +27,12 @@ from dractor.wsman import WSMANBasicAuthConfig, WSMANClient
 from dractor.dcim.base import DCIMFactory, DCIMMethodObject, DCIMAttributeObject
 from dractor.exceptions import DCIMClientException, UnsupportedLCVersion
 
-DCIM_VERSION_MAP = {'2.30.30.30': 'dractor.dcim.v2303030'}
+DCIM_VERSION_MAP = {
+    '1.5.0': 'dractor.dcim.v15',
+    '2.1.0': 'dractor.dcim.v21',
+    '2.10.10.10': 'dractor.dcim.v2101010',
+    '2.30.30.30': 'dractor.dcim.v2303030'
+}
 
 class Client(object):
     """

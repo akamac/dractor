@@ -1,0 +1,15 @@
+[Description(
+      "DCIM_EnclosureTemperatureSensor is a derivation of "
+      "CIM_NumericSensor.")]
+class DCIM_EnclosureTemperatureSensor: CIM_NumericSensor
+{
+
+  [Description (
+          "A string containing the Fully Qualified Device Description "
+          "A user-friendly name for the object. This property allows each "
+          " instance to define a user-friendly name in addition to its key "
+          " properties, identity data, and description information. "
+          )]
+  string FQDD;
+
+};

@@ -1,0 +1,14 @@
+/* ---------------------------------------------------------------------------
+ * 	DCIM_AdminDomain
+ * ---------------------------------------------------------------------------
+ */
+class DCIM_AdminDomain : CIM_AdminDomain
+{ 
+};
+
+instance of DCIM_AdminDomain
+{
+	CreationClassName="DCIM_AdminDomain";
+	Name="MAP";
+	ElementName="SM CLP Admin Domain";
+};

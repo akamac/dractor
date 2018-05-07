@@ -1,0 +1,17 @@
+/* ---------------------------------------------------------------------------
+ *     DCIM_SMCLPADOwningCollectionElement
+ * ---------------------------------------------------------------------------
+ */
+[ Association,
+  Description ("OwningCollectionElement is used to associate "
+  "a ConcreteCollection instance with its scoping CIM_System instance." )
+]
+class DCIM_SMCLPADOwningCollectionElement : CIM_OwningCollectionElement
+{
+};
+
+instance of DCIM_SMCLPADOwningCollectionElement
+{
+	OwnedElement="root/dcim:DCIM_HardwareConcreteCollection.InstanceID=\"DCIM:Hardware:ConcreteCollection:1\"";
+	OwningElement="root/dcim:DCIM_AdminDomain.CreationClassName=\"DCIM_AdminDomain\",Name=\"MAP\"";
+};

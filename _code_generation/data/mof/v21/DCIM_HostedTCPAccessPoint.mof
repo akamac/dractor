@@ -1,0 +1,3 @@
+// class: sp1 => DCIM_HostedTCPAccessPoint => tcpendpt
+class DCIM_HostedTCPAccessPoint : CIM_HostedAccessPoint
+{ };

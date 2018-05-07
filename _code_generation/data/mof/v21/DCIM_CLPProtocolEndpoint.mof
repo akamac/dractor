@@ -1,0 +1,13 @@
+// ==================================================================
+// DCIM_CLPProtocolEndpoint
+// ==================================================================
+// Class: DCIM_CLPProtocolEndpoint
+class DCIM_CLPProtocolEndpoint : CIM_CLPProtocolEndpoint
+{
+     [Write, Description (
+          "Identifies the pid of process that the current clp session belongs to."
+          "It is used to filter the ConcreteJob instances associated to this "
+          "endpoint."),
+       ModelCorrespondence { "DCIM_CLPProtocolEndpoint.OEMAvocent_pid " }]
+   string OEMAvocent_pid;
+};

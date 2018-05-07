@@ -1,0 +1,154 @@
+// Copyright (c) 2010 Dell Inc.  All rights reserved.
+// ==================================================================
+// DCIM_PowerSupplyView
+// ==================================================================
+  [Version ( "1.0.0" ), Description(
+       "DCIM_PowerSupplyView is a derivation of CIM_View "
+       "with Power Supply specific data. Each platform power supply "
+       "is represented by an instance of DCIM_PowerSupplyView class. " )]
+class DCIM_PowerSupplyView : DCIM_View {
+      [Key, Description (
+          "A string containing the Fully Qualified Device Description"
+          "A user-friendly name for the object. This property allows each"
+          " instance to define a user-friendly name in addition to its key"
+          " properties, identity data, and description information."
+          )]
+   string InstanceID;
+
+      [Description (
+          "A string containing the Fully Qualified Device Description"
+          "A user-friendly name for the object. This property allows each"
+          " instance to define a user-friendly name in addition to its key"
+          " properties, identity data, and description information."
+          )]
+   string FQDD;
+
+      [Description (
+          "A string containing the model for the power supply.")]
+   string Model;
+
+      [Description (
+          "A string containing the serial number")]
+   string SerialNumber;
+
+      [Description (
+          "A string containing the part number")]
+   string PartNumber;
+
+      [Description (
+          "A string containing the manufacturer.")]
+   string Manufacturer;
+
+      [Description (
+          "A string containing the detailed state of the power "
+          "supply. ")]
+   string DetailedState;
+
+      [Description (
+          "A string containing the firmware version.")]
+   string FirmwareVersion;
+
+      [Description ( 
+          "The input voltage for the power "
+          "supply, in Volts. A value of 0 denotes \'unknown\'." ), 
+       Units ( "Volts" ), 
+       PUnit ( "Volt" )]
+   uint32 InputVoltage;
+
+      [Description ( 
+          "Represents the total output power of the power supply in "
+          "Watts. 0 denotes \'unknown\'." ), 
+       Units ( "Watts" ), 
+       MappingStrings { "MIF.DMTF|Power Supply|004.21" }, 
+       PUnit ( "Watt" )]
+   uint32 TotalOutputPower;
+
+      [Description (
+          "PrimaryStatus provides a high level status value, intended to align"
+          "with Red-Yellow-Green type representation of status. It should be"
+          "used in conjunction with DetailedState to provide high level and"
+          "detailed health status of the power supply and its subcomponents."
+          "PrimaryStatus consists of one of the following values: Unknown, OK,"
+          "Degraded or Error. \"Unknown\" indicates the implementation is in"
+          "general capable of returning this property, but is unable to do so"
+          "at this time. \"OK\" indicates the power supply is functioning "
+         "normally. \"Degraded\" indicates the power supply is functioning"
+         "below normal. \"Error\" indicates the power supply is in an Error"
+         " condition. " ),         
+       ValueMap { "0", "1", "2", "3", "0x8000", "0xFFFF" },
+       Values { "Unknown", "OK", "Degraded", "Error",
+               "DMTF Reserved", "Vendor Reserved" }]
+   uint32 PrimaryStatus;
+
+      [Description (
+          "Power supply type indicates the type (AC/DC - Variable/Regulated) "
+          "of power supply based on the input power." ),
+       ValueMap { "0", "1"},
+       Values { "AC", "DC"}]
+   uint16 Type;
+
+      [Description ( 
+          "RedundancyStatus provides information on the state of "
+          "the power supply redundancy group. \'Fully Redundant\' "
+          "(value=2) means "
+          "that all of the configured redundancy is still "
+          "available; \'Degraded Redundancy\' (3) means that some "
+          "configured elements are degraded, missing or failed but "
+          "that the number of elements in the set is still greater "
+          "than the minimum required (\'MinNumberNeeded\'); "
+          "\'Redundancy Lost\' (4) means that sufficient configured "
+          "elements are missing or failed that no redundancy is "
+          "available and the next failure experienced will cause "
+          "overall failure. \'Overall Failure\' (5) means that "
+          "there has been an overall failure of the RedundancySet." ), 
+       ValueMap { "0", "1", "2", "3", "4", "5" }, 
+       Values { "Unknown", "DMTF Reserved", "Fully Redundant", 
+          "Degraded Redundancy", "Redundancy Lost", "Overall Failure" }, 
+       ModelCorrespondence { "CIM_RedundancySet.MinNumberNeeded" }]
+   uint16 RedundancyStatus;
+   
+      [Description ( 
+          "RedTypeOfSet provides information on the type of "
+          "redundancy. N+1 (=2) indicates all members are active, "
+          "are unaware and function independent of one another. "
+          "However, there exist at least one extra member to "
+          "achieve functionality. \'Sparing\' is implied (i.e. each "
+          "member can be a spare for the other(s). An example of "
+          "N+1 is a system that has 2 power supplies, but needs "
+          "only 1 power supply to functioning properly. N+1 is a "
+          "special case of N+M redundancy where M=1. A value of N+1 "
+          "(=2) shall be used for N+M redundancy. - Load Balanced "
+          "(=3) indicates all members are active. However, there "
+          "functionality is not independent of each other. Their "
+          "functioning is determined by some sort of load balancing "
+          "algrothim (implemented in hardware and/or software). "
+          "\'Sparing\' is implied (i.e. each member can be a spare "
+          "for the other(s). \n"
+          "- Sparing (=4) indicates that all members are active and "
+          "are aware of each others. However, their functionality "
+          "is independent until failover. Each member can be a "
+          "spare for the other(s). \n"
+          "- Limited Sparing (=5) indicates that all members are "
+          "active, and they may or may not be aware of each and "
+          "they are not spares for each other. Instead, their "
+          "redundancy is indicated by the IsSpare relationship." ), 
+       ValueMap { "0", "1", "2", "3", "4", "5", "..", "0x8000.." }, 
+       Values { "Unknown", "Other", "N+1", "Load Balanced", 
+          "Sparing", "Limited Sparing", "DMTF Reserved", 
+          "Vendor Reserved" }, 
+       ArrayType ( "Indexed" ), 
+       ModelCorrespondence { "CIM_RedundancySet.OtherTypeOfSet" }]
+   uint16 RedTypeOfSet[];
+
+      [Description ( 
+          "RedMinNumberNeeded indicates the smallest number of "
+          "power supplies that MUST be operational in order to "
+          "function. "
+          "For example, in an N+1 redundancy relationship, the "
+          "MinNumberNeeded property is set equal to N. In a "
+          "\'LimitedSparing\' environment, this property is "
+          "meaningless and SHOULD be set to zero." ), 
+       MinValue ( 0 )]
+   uint32 RedMinNumberNeeded;
+};
+

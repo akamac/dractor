@@ -1,0 +1,170 @@
+// Copyright (c) 2010 Dell Inc.  All rights reserved.
+// ==================================================================
+// DCIM_NICView
+// ==================================================================
+   [Description(
+       "DCIM_NICView is a derivation of DCIM_View "
+       "with NIC specific data" )]
+class DCIM_NICView : DCIM_View {
+      [Key, Description (
+          "Is a unique string containing the Fully Qualified Device "
+          "Description and view name. ")]
+   string InstanceID;
+
+      [Description (
+          "A string containing the Fully Qualified Device Description"
+          "A user-friendly name for the object. This property allows each"
+          " instance to define a user-friendly name in addition to its key"
+          " properties, identity data, and description information."
+          )]
+   string  FQDD;
+
+      [Description (
+          "Represents if network interface card personality is enabled "
+          "or disabled on current partition in a Converged Network Adaptor "
+          "device. NicMode has the following values: Enabled or Disabled."
+          )]
+   string NicMode;
+
+      [Description (
+          "Represents if Fibre Channel over Ethernet personality is enabled "
+          "or disabled on current partition in a Converged Network Adaptor "
+          "device. FCoEOffloadMode has the following values: Enabled "
+          "or Disabled."
+          )]
+   string FCoEOffloadMode;
+
+      [Description (
+          "Represents if Internet Small Computer System Interface personality "
+          "is enabled or disabled on current partition in a Converged Network "
+          "Adaptor device. iScsiOffloadMode has the following values: Enabled "
+          "or Disabled."
+          )]
+   string iScsiOffloadMode;
+
+      [Description (
+          "Represents maximum bandwidth on current partition in "
+          "a Converged Network Adapter device. It should be greater than "
+		  "MinBandwidth. It is represented in units of percentage."
+          )]
+   uint16 MaxBandwidth;
+
+      [Description (
+          "Represents minimum bandwidth on current partition of "
+          "a Converged Network Adapter device. It should be less than "
+		  "MaxBandwidth. It is represented in units of percentage."
+          )]
+   uint16 MinBandwidth;
+
+      [Description (
+          "Represents family version of firmware."
+          )]
+   string FamilyVersion;
+
+      [Description (
+          "Represents firmware version of Controller BIOS."
+          )]
+   string ControllerBIOSVersion;
+
+      [Description (
+          "Represents firmware version of EFI."
+          )]
+   string EFIVersion;
+
+   [Description (
+          "Represents Worldwide Port Name of a port." ),
+          MaxLen ( 11 )]
+   string WWPN;
+
+      [Description (
+          "A string containing the Product name"),
+          MaxLen ( 256 )]
+   string ProductName;
+
+      [Description (
+          "A string containing the Current MAC address"
+          "The principal unicast address used in "
+          "communication with the NIC. The MAC address"
+          "is formatted as twelve hexadecimal digits "
+          "(e.g., \"010203040506\"), with each pair "
+          "representing one of the six octets of the MAC address"
+          " in \"canonical\" bit order according to RFC 2469"), 
+       MaxLen ( 12 )]
+   string CurrentMACAddress;
+
+      [Description ( 
+          "PermanentAddress defines the network address that is "
+          "hardcoded into a port. This \'hardcoded\' address can be "
+          "changed using a firmware upgrade or a software "
+          "configuration. When this change is made, the field "
+          "should be updated at the same time. PermanentAddress "
+          "should be left blank if no \'hardcoded\' address exists "
+          "for the NetworkAdapter." ), 
+       MaxLen ( 64 ), 
+       MappingStrings { "MIF.DMTF|Network Adapter 802 Port|001.2" }]
+   string PermanentMACAddress;
+
+      [Description ( 
+          "The bus number where this PCI device resides")]
+   uint8 BusNumber;
+
+      [Description (
+          "The device number assigned to this PCI device for this bus. ")]
+   uint8 DeviceNumber;
+
+      [Description (
+          "The function number for this PCI device. ")]
+   uint8 FunctionNumber;
+
+     [Description (
+         "PCI Vendor ID contains a value assigned by the PCI SIG "
+         "used to identify the manufacturer of the device. ")]
+  string PCIVendorID;
+
+     [Description (
+         "PCI Subsystem Vendor ID contains a value assigned by the PCI SIG "
+         "used to identify the card manufacturer. ")]
+   string PCISubVendorID;
+
+     [Description (
+         "PCI Device ID contains a value assigned by the device "
+         "manufacturer used to identify the type of device. ")]
+   string PCIDeviceID;
+
+  [Description (
+      "PCI Subsystem ID contains a value assigned by the device "
+      " manufacturer used to uniquely identify the device. "
+      " It is assigned from the same number space as the PCIDeviceID. ")]
+   string PCISubDeviceID;
+
+     [Description (
+         "PermanentAddress defines the network address that is "
+         "hardcoded into a port. This \'hardcoded\' address can be "
+         "changed using a firmware upgrade or a software "
+         "configuration. When this change is made, the field "
+         "should be updated at the same time. PermanentAddress "
+         "should be left blank if no \'hardcoded\' address exists "
+         "for the NetworkAdapter." ),
+      MaxLen ( 64 ),
+      MappingStrings { "MIF.DMTF|Network Adapter 802 Port|001.2" }]
+   string PermanentiSCSIMACAddress;
+
+     [Description (
+         "DataBusWidth of the slot. Refer to System "
+         "Management BIOS (SMBIOS) Reference Specification "
+         "for values and their meaning. ")]
+   string DataBusWidth;
+
+     [Description (
+         "SlotLength of the slot. Refer to System "
+         "Management BIOS (SMBIOS) Reference Specification "
+         "for values and their meaning. ")]
+   string SlotLength;
+
+     [Description (
+         "SlotType of the slot. Refer to System "
+		 "Management BIOS (SMBIOS) Reference Specification "
+         "for values and their meaning. ")]
+   string SlotType;
+
+};

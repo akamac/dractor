@@ -1,0 +1,17 @@
+// ==================================================================
+// DCIM_CLPCapabilities
+// ==================================================================
+class DCIM_CLPCapabilities : CIM_CLPCapabilities
+{ };
+// Instance: DCIM_CLPCapabilities for CLP capablity
+instance of DCIM_CLPCapabilities
+{
+    InstanceID = "clpcap:1";
+    ElementName = "CLP Capabilities";
+    RequestedStatesSupported = {};
+    ElementNameEditSupported = FALSE;
+    MaxElementNameLen = 64;
+    MaxConnections = 5;
+    CLPVersions = {"1.0.2"};
+    SMMEAddressVersions = {"1.0.0b"};
+};

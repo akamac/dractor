@@ -1,0 +1,13 @@
+/* ---------------------------------------------------------------------------
+ *     DCIM_HostedCLPService
+ * ---------------------------------------------------------------------------
+ */
+class DCIM_HostedCLPService:CIM_HostedService
+{
+};
+
+instance of DCIM_HostedCLPService
+{
+    Antecedent="root/dcim:DCIM_SPComputerSystem.CreationClassName=\"DCIM_SPComputerSystem\",Name=\"systemmc\"";
+    Dependent="root/dcim:DCIM_CLPProtocolService.SystemCreationClassName=\"DCIM_SPComputerSystem\",CreationClassName=\"DCIM_CLPProtocolService\",SystemName=\"systemmc\",Name=\"clpsvc:1\"";
+};

@@ -1,0 +1,3 @@
+// class: clpsvc1 => DCIM_CLPElementCapabilities => clpcap1
+class DCIM_CLPElementCapabilities : CIM_ElementCapabilities
+{ };

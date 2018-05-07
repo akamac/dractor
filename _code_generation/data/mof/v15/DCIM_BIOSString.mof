@@ -1,0 +1,17 @@
+// Copyright (c) 2010 Dell Inc.  All rights reserved.
+// ==================================================================
+// DCIM_BIOSString
+// ==================================================================
+  [Description("DCIM_BIOSString is a derivation of "
+       "CIM_BIOSString.")]
+class DCIM_BIOSString : CIM_BIOSString
+{
+      [Description (
+          "A string containing the Fully Qualified Device Description "
+          "A user-friendly name for the object. This property allows each "
+          "instance to define a user-friendly name in addition to its key "
+          "properties, identity data, and description information.")]
+   string  FQDD;
+
+};
+

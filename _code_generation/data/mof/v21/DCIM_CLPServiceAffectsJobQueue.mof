@@ -1,0 +1,3 @@
+// class: clpsvc1 => DCIM_CLPServiceAffectsJobQueue => clpjobq1
+class DCIM_CLPServiceAffectsJobQueue : CIM_ServiceAffectsElement
+{ };

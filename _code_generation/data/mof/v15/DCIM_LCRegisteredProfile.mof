@@ -1,0 +1,5 @@
+// Copyright (c) 2010 Dell Inc.  All rights reserved.
+[ provider("cmpi:dciminterop") ]
+class DCIM_LCRegisteredProfile : CIM_RegisteredProfile
+{
+};

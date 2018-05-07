@@ -1,0 +1,53 @@
+// Copyright (c) 2010 Dell Inc.  All rights reserved.
+// ==================================================================
+// DCIM_PhysicalPackage
+// ==================================================================
+  [Version ( "1.0.0" ), Description(
+       "DCIM_PhysicalPackage is a derivation of CIM_PhysicalPackage "
+       "with Physical Package specific data" )]
+class DCIM_PhysicalPackage : CIM_PhysicalPackage {
+      [Description (
+          "A string containing the Fully Qualified Device Description"
+          "A user-friendly name for the device. This property allows each"
+          " instance to define a user-friendly name in addition to its key"
+          " properties, identity data, and description information."
+          )]
+   string DeviceFQDD;
+};
+      [Description (
+          "<DeviceFQDD>#FRU,This property shall be the key and shall have unique value."
+          )]
+   string Tag;
+};
+      [Description (
+          "The property shall represent the manufacturer name."
+          )]
+   string Manufacturer;
+};
+      [Description (
+          "The property shall represent the part number of the FRU. If the part number is not available, the value shall be set to 'Not Available'."
+          )]
+   string PartNumber;
+};
+      [Description (
+          "The property shall represent the part number of the FRU. If the part number is not available, the value shall be set to 'Not Available'."
+          )]
+   string SerialNumber;
+};
+      [Description (
+          "The property shall represent the version of the FRU. If the version is not available, the value shall be set to 'Not Available'."
+          )]
+   string Version;
+};
+      [Description (
+          "DCIM <Platform Model Name> Chassis"
+          )]
+   string ElementName;
+};
+      [Description (
+          "This property is a representation of the package type."),
+      ValueMap { 4,6,9,13 },
+       Values { "Cross Connect/Backplane", "Power Supply", "Module/Card", "Memory" }]
+          )]
+   uint16 PackageType;
+};

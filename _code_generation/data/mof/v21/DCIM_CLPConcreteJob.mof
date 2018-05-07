@@ -1,0 +1,13 @@
+// ==================================================================
+// DCIM_CLPConcreteJob
+// ==================================================================
+// Class: DCIM_CLPConcreteJob
+class DCIM_CLPConcreteJob : CIM_ConcreteJob
+{
+      [Write, Description (
+          "Identifies the pid of process that the current ConcreteJob belongs to."
+          "It is used to filter the CLPProtocolEndpoing instances associated to this "
+          "concrete job."),
+      ModelCorrespondence { "DCIM_CLPConcreteJob.OEMAvocent_pid " }]
+   string OEMAvocent_pid;
+};

@@ -1,0 +1,28 @@
+// Copyright (c) 2009 Dell Inc.  All rights reserved.
+// ===================================================================
+// DCIM_LifecycleJob
+// ===================================================================
+ [Version ( "1.0.0" ),Description(
+   "DCIM_LifecycleJob is a Dell extension of  CIM_ConcreteJob "
+   "class provides properties to check the status of a job. ") ]
+class  DCIM_LifecycleJob  : CIM_ConcreteJob{
+    [Description (
+	 "Error Message ID- can be used to index "
+         "into Dell Message registry files. ")]
+     string MessageID;
+       [Description ( 
+         "Completed error message in English. " )]
+     string Message;
+       [Description ( 
+         "Substitution variables for dynamic error messages. ")]
+     string MessageArguments;
+       [Description (
+         "Scheduled StartTime of a job in datetime format " 
+         "yyyymmddhhmmss. ")]
+     string JobStartTime;
+       [Description (
+         "Scheduled EndTime of a job in datetime format " 
+         "yyyymmddhhmmss. ")]
+     string JobUntilTime;
+ };
+

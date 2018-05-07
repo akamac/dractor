@@ -1,0 +1,13 @@
+/* ---------------------------------------------------------------------------
+ *     DCIM_SMCLPADHardwareMemberOfCollection
+ * ---------------------------------------------------------------------------
+ */
+class DCIM_SMCLPADHardwareMemberOfCollection : CIM_MemberOfCollection
+{
+};
+
+instance of DCIM_SMCLPADHardwareMemberOfCollection
+{
+    Collection="root/dcim:DCIM_HardwareConcreteCollection.InstanceID=\"DCIM:Hardware:ConcreteCollection:1\"";
+    Member="root/dcim:DCIM_Chassis.Tag=\"mainsystemchassis\",CreationClassName=\"DCIM_Chassis\"";
+};
