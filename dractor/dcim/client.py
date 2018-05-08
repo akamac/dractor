@@ -31,7 +31,8 @@ DCIM_VERSION_MAP = {
     '1.5.0': 'dractor.dcim.v15',
     '2.1.0': 'dractor.dcim.v21',
     '2.10.10.10': 'dractor.dcim.v2101010',
-    '2.30.30.30': 'dractor.dcim.v2303030'
+    '2.30.30.30': 'dractor.dcim.v2303030',
+    '2.40.40.40': 'dractor.dcim.v2404040'
 }
 
 class Client(object):

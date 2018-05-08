@@ -1,0 +1,18 @@
+// Copyright (c) 2015 Dell Inc.  All rights reserved.
+// ==================================================================
+// DCIM_VideoNWParamsView
+// ==================================================================
+
+[Version ( "1.0.0" ), Description(
+       "DCIM_VideoNWParamsView is a derivation of DCIM_VideoView "
+       "with Video specific data" )]
+class DCIM_VideoNWParamsView : DCIM_VideoView {
+    [Description (
+        "A string containing IP Address." )]
+    string IpAddress;
+
+    [Description (
+        "A string containing Mac Address." )]
+    string MacAddress;
+};
+
