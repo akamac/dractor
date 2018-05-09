@@ -79,7 +79,7 @@ class CustomBuildCommand(setuptools.command.build_py.build_py):
         # iterate across supported dell versions and generate code for each
         py_root_output_path = os.path.abspath(os.path.join('dractor', 'dcim'))
         mof_translator = _code_generation.MOFTranslator(py_root_output_path)
-        for dell_version in ['v14', 'v15', 'v20', 'v21', 'v2101010', 'v2303030', 'v2404040']:
+        for dell_version in ['v14', 'v15', 'v20', 'v21', 'v2101010', 'v2303030']:
             mof_translator.translate(dell_version)
 
         #

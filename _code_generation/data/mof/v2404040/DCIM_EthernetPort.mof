@@ -1,6 +1,0 @@
-[Description(
-       "DCIM_EthernetPort is a derivation of "
-       "CIM_EthernetPort.")]
-class DCIM_EthernetPort : CIM_EthernetPort
-{
-};

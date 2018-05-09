@@ -1,3 +1,0 @@
-class DCIM_IPMIRoleBasedManagementCapabilities : CIM_RoleBasedManagementCapabilities
-{
-};

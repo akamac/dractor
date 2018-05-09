@@ -1,4 +1,0 @@
-[Association]
-class DCIM_LocalRBAIdentityMemberOfCollection : CIM_MemberOfCollection
-{
-};

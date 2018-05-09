@@ -1,4 +1,0 @@
-[Association]
-class DCIM_LocalRoleConcreteDependency : CIM_ConcreteDependency
-{
-};

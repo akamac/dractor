@@ -1,3 +1,0 @@
-class DCIM_IPMIRole : CIM_Role
-{
-};

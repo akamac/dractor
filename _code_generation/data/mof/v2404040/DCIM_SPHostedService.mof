@@ -1,4 +1,0 @@
-[Association]
-class DCIM_SPHostedService : CIM_HostedService
-{ 
-};

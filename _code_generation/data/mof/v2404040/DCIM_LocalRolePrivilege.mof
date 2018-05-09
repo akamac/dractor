@@ -1,3 +1,0 @@
-class DCIM_LocalRolePrivilege : CIM_Privilege
-{
-};

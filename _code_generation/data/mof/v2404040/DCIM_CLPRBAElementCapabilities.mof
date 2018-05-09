@@ -1,4 +1,0 @@
-[Association]
-class DCIM_CLPRBAElementCapabilities : CIM_ElementCapabilities
-{
-};

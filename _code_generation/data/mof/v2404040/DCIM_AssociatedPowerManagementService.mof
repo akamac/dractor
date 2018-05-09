@@ -1,6 +1,0 @@
-[ Description ("The association between a Managed System Element and its "
-    "power management service.")
-]
-class DCIM_CSAssociatedPowerManagementService : CIM_AssociatedPowerManagementService
-{
-};

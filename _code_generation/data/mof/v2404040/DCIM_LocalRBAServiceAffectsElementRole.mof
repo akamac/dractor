@@ -1,4 +1,0 @@
-[Association]
-class DCIM_LocalRBAServiceAffectsElementRole : CIM_ServiceAffectsElement
-{
-};

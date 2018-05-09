@@ -1,4 +1,0 @@
-[Association, provider("cmpi:dciminterop") ]
-class DCIM_LCElementConformsToProfile : CIM_ElementConformsToProfile
-{
-};
