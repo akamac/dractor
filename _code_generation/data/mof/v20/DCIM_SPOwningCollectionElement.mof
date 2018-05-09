@@ -1,0 +1,12 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+// ==================================================================
+// DCIM_SPOwningCollectionElement
+// ==================================================================
+
+    [Association, Description(
+        "DCIM_SPOwningCollectionElement is a"
+        "trivial derivation of CIM_OwningCollectionElement") ]
+class DCIM_SPOwningCollectionElement : CIM_OwningCollectionElement 
+{
+
+};

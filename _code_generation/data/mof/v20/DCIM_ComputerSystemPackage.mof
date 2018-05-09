@@ -1,0 +1,11 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+// ==================================================================
+//  DCIM_ComputerSystemPackage
+// ==================================================================
+[ Association,
+  Description ("LogicalDevices can be aggregated by a System. "
+  "This relationship is made explicit by the SystemDevice association." )
+]
+class DCIM_ComputerSystemPackage : CIM_ComputerSystemPackage {
+
+};

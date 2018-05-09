@@ -1,0 +1,12 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+// ---------------------------------------------------------------------------
+//     DCIM_SMCLPADOwningCollectionElement
+// ---------------------------------------------------------------------------
+// 
+[ Association,
+  Description ("OwningCollectionElement is used to associate "
+  "a ConcreteCollection instance with its scoping CIM_System instance." )
+]
+class DCIM_SMCLPADOwningCollectionElement : CIM_OwningCollectionElement
+{
+};

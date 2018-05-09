@@ -1,0 +1,14 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+// ---------------------------------------------------------------------------
+//     DCIM_SMCLPADSystemComponent
+// ---------------------------------------------------------------------------
+// 
+[ Association, 
+  Description ("It is used to aggregate CIM_ComputerSystem instances "
+  "that are compliant with the Base Server Profile, "
+  "the Service Processor Profile, and the Modular System Profile "
+  "into the CIM_AdminDomain instance.")
+]
+class DCIM_SMCLPADSystemComponent : CIM_SystemComponent
+{
+};

@@ -1,0 +1,7 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+[Association, Description ("The association between a Managed System Element and its "
+    "power management service.")
+]
+class DCIM_CSAssociatedPowerManagementService : CIM_AssociatedPowerManagementService
+{
+};

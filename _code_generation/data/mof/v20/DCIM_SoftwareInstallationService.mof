@@ -1,0 +1,56 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+// ==================================================================
+//  DCIM_SoftwareInstallationService
+// ==================================================================
+[Description (
+       "A class derived from SoftwareInstallationService "
+       "to represent the Software Installation Services provided." ) ]
+class DCIM_SoftwareInstallationService : CIM_SoftwareInstallationService
+{
+  [Override("InstallFromURI")]
+    uint32 InstallFromURI
+    (
+        [IN]
+      string URI,
+        [IN]
+      CIM_SoftwareIdentity REF Target,
+        [OUT]
+      string MessageID,
+        [OUT]
+      string Message,
+        [OUT]
+      string MessageArguments[],
+        [OUT]
+      CIM_ConcreteJob REF Job
+    );
+
+  [Override("InstallFromSoftwareIdentity")]
+    uint32 InstallFromSoftwareIdentity
+    (
+        [IN]
+      CIM_SoftwareIdentity REF Target,
+        [OUT]
+      string MessageID,
+        [OUT]
+      string Message,
+        [OUT]
+      string MessageArguments[],
+        [OUT]
+      CIM_ConcreteJob REF Job
+    );
+
+    uint32 CreateRebootJob
+    (
+        [IN]
+      uint16 RebootJobType,
+        [OUT]
+      string MessageID,
+        [OUT]
+      string Message,
+        [OUT]
+      string MessageArguments[],
+        [OUT]
+      CIM_ConcreteJob REF RebootJobID
+    );
+    
+};

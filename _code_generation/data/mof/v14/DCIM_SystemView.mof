@@ -1,0 +1,217 @@
+// Copyright (c) 2010 Dell Inc.  All rights reserved.
+// ==================================================================
+// DCIM_SystemView
+// ==================================================================
+  [Version ( "1.0.0" ), Description(
+       "DCIM_SystemView is a derivation of CIM_View "
+       "with System specific data" )]
+class DCIM_SystemView : DCIM_View {
+      [Key, Description (
+          "A string containing the Fully Qualified Device Description "
+          "A user-friendly name for the object. This property allows each "
+          " instance to define a user-friendly name in addition to its key "
+          " properties, identity data, and description information." )]
+   string InstanceID;
+
+      [Description (
+          "A string containing the Fully Qualified Device Description "
+          "A user-friendly name for the object. This property allows each "
+          " instance to define a user-friendly name in addition to its key "
+          " properties, identity data, and description information." )]
+   string FQDD;
+
+   [Description ( 
+          "Model of the system, eg: PowerEdge R610" )]
+   string Model;
+
+   [Description (
+          "System manufacturer string, e.g. DELL Inc" )]
+   string Manufacturer;
+
+   [Description (
+          "Service tag of the system." )]
+   string ServiceTag;
+
+   [Description (
+          "Service tag of the modular chasis. Valid only on the "
+          "Blade Servers, where it denotes the chassis enclosure "
+          "service tag." )]
+   string ChassisServiceTag;
+
+   [Description (
+          "The height of the enclosure, in 'U's. A U is a standard unit "
+          "of measure for the height of a rack or rack-mountable component "
+          "and is equal to 1.75 inches or 4.445 cm. A value of 0 indicates "
+          "that the enclosure height is unspecified. For instance, this "
+          "variable would be set to 1 for R610 system meaning the height "
+          "of the system is 1U" )]
+   uint16 ChassisSystemHeight;
+
+   [Description (
+          "The maximum memory capacity in MB" ),
+          PUnit ( "byte * 10^6" )]
+   uint32 SysMemTotalSize;
+
+   [Description (
+          "The physical location of the memory array, whether on the system "
+          "board or an add-in board."),
+       ValueMap { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "160",
+                  "161", "162", "163"},
+       Values { "Other", "Unknown", "System board or motherboard",
+                "ISA add-on card", "EISA add-on card", "PCI add-on card",
+                "MCA add-on card", "PCMCIA add-on card", 
+                "Proprietary add-on card",
+                "NuBus", "PC-98/C20 add-on card", "PC-98/C24 add-on card",
+                "PC-98/E add-on card", "PC-98/Local bus add-on card"}]
+   uint16 SysMemLocation;
+
+
+   [Description (
+          "The primary hardware error correction or detection method "
+          "supported by this memory array" ),
+       ValueMap { "1", "2", "3" , "4", "5", "6", "7"},
+       Values { "Other", "Unknown", "None", "Parity", "Single-bit ECC", 
+                "Multi-bit ECC", "CRC"}]
+   uint16 SysMemErrorMethodology;
+
+   [Description (
+          "The number of slots or sockets available for memory devices "
+          "in this array. This value represents the number of memory "
+          "device structures that comprise this memory array." )]
+   uint32 MaxDIMMSlots;
+
+   [Description (
+          "System revision describes the platform revision of the "
+          "corresponding model. The revisions are usually correlated "
+          "with an upgrade of the CPU model in the same platform model. " ),
+       ValueMap { "0", "1", "2", "3"},
+       Values {" ", "II", "III", "IV"}]
+   uint16 SystemRevision;
+
+   [Description (
+          "The BIOS version installed on the system." )]
+   string BIOSVersionString;
+
+   [Description (
+          "String number of the BIOS release date. The date string, if "
+          "supplied, is in mm/dd/yyyy format." )]
+   string BIOSReleaseDate;
+
+   [Description (
+          "System ID describes the model of the system in integer value. "
+          "The SystemID property is usually used to identify the "
+          "compatibility of the updateable software/firmware. " )]
+   uint32 SystemID;
+
+   [Description (
+          "System GUID uniquely identifies the system. "
+          "The property is also sometimes referred as "
+          "BIOS GUID. " )]
+   string PlatformGUID;
+
+   [Description (
+          "System Name string in ASCII." )]
+   string HostName;
+
+   [Description (
+          "Asset tag of the system" )]
+   string AssetTag;
+
+   [Description (
+       "System memory primary status provides a high level status value, "
+       "intended to align with Red-Yellow-Green type representation of status."
+       "It should be used to provide high "
+       "level and detailed health status of the system memory and its "
+       "subcomponents. PrimaryStatus consists of one of the following "
+       "values: Unknown, OK, Degraded or Error. \"Unknown\" indicates the "
+       "implementation is in general capable of returning this property, "
+       "but is unable to do so at this time. \"OK\" indicates the "
+       "system memory is functioning "
+       "normally. \"Degraded\" indicates the system memory is functioning"
+       "below normal. \"Error\" indicates the system memory is in an Error"
+       "condition. " ),
+     ValueMap { "0", "1", "2", "3", "0x8000", "0xFFFF" },
+     Values { "Unknown", "OK", "Degraded", "Error",
+              "DMTF Reserved", "Vendor Reserved" }]
+    uint32 SysMemPrimaryStatus;
+
+   [Description (
+          "System Memory Fail Over State" )]
+   string SysMemFailOverState;
+
+   [Description (
+          "System memory operation mode. Denotes the mode of "
+          "operation for system memory such as mirrored, "
+          "advanced ECC, optimized mode. " )]
+   string MemoryOperationMode;
+
+   [Description (
+          "System memory sockets current capacity." )]
+   uint32 PopulatedDIMMSlots;
+
+   [Description (
+          "An integer enumeration describing the type of error that "
+          "occurred most recently. For example, single (value=6) or "
+          "double bit errors (7) can be specified using this "
+          "property. " ), 
+       ValueMap { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", 
+          "10" }, 
+       Values { "Unknown", "Other", "OK", "Bad Read", 
+          "Parity Error", "Single-Bit Error", "Double-Bit Error", 
+          "Multi-Bit Error", "Nibble Error", "Checksum Error", 
+          "CRC Error" } ]
+   uint16 SysMemErrorInfo;
+
+   [Description (
+          "Base board chassis slot. Valid only for blade servers, "
+          "where it denotes the slot the Server Blade is plugged in "
+          "in the modular chassis enclosure. " )]
+   string BaseBoardChassisSlot;
+
+   [Description (
+           "The current power state of the system."), 
+       ValueMap { "2", "8" }, 
+       Values {"On",  "Off - Soft" }]
+   uint16 PowerState;
+
+   [Description (
+          "Chassis Name like Main System Chassis" )]
+   string ChassisName;
+
+   [Description (
+          "Blade Geometry. Valid only for Blade Servers." ),
+       ValueMap { "0", "1", "2", "3", "4"},
+       Values { "Single width, single height", "Dual width, single height",
+                    "Single width, dual height", "Dual width, dual height",
+			  "Not Applicable"}]
+   uint16 BladeGeometry;
+
+      [Description (
+          "PrimaryStatus provides a high level status value, intended to align"
+          "with Red-Yellow-Green type representation of status. It should be"
+          "used in conjunction with DetailedStatus to provide high level and"
+          "detailed health status of the system and its subcomponents."
+          "PrimaryStatus consists of one of the following values: Unknown, OK,"
+          "Degraded or Error. \"Unknown\" indicates the implementation is in"
+          "general capable of returning this property, but is unable to do so"
+          "at this time. \"OK\" indicates the system is functioning "
+         "normally. \"Degraded\" indicates the system is functioning"
+         "below normal. \"Error\" indicates the system is in an Error"
+         " condition. " ),         
+       ValueMap { "0", "1", "2", "3", "0x8000", "0xFFFF" },
+       Values { "Unknown", "OK", "Degraded", "Error",
+               "DMTF Reserved", "Vendor Reserved" }]
+   uint32 PrimaryStatus;
+
+      [Description ("Maximum CPU Sockets")]
+   uint32 MaxCPUSockets;
+
+      [Description ("Populated CPU Sockets")]
+   uint32 PopulatedCPUSockets;
+
+      [Description ("Maximum PCIeSlots")]
+   uint32 MaxPCIeSlots;
+
+      [Description ("Populated PCIeSlots")]
+   uint32 PopulatedPCIeSlots;
+};

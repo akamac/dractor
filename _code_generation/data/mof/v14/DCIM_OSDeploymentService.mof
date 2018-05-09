@@ -1,0 +1,444 @@
+// Copyright (c) 2011 Dell Inc.  All rights reserved.
+// ==================================================================
+// DCIM OS Deployment classes and methods
+// ==================================================================
+   [Description (
+       "DCIM_OSDeploymentService is a Dell extension of CIM_Service. "
+       "This class supports several extrinsic methods to support "
+       "remote Operating System deployment.")]
+class DCIM_OSDeploymentService : CIM_Service {
+      [Description ( "GetDriverPackInfo(). This method returns the list "
+       "of Operating Systems that can be installed on the server using "
+       "embedded device drivers present in the Lifecylce controller." ), 
+       ValueMap { "0", "1", "2"}, 
+       Values   { "Success", "Not Supported", "Failed"}]
+   uint32 GetDriverPackInfo(
+         [IN ( false ), OUT, Description ( 
+             "Version of the driver pack present in the Lifecylce controller" )]
+      string Version,
+         [IN ( false ), OUT, Description ( 
+             "List of Operating Systems supported for deployment on the Server" )]
+      string OSList[],
+         [IN ( false ), OUT, Description ( 
+             "Reference to a CIM_ConcreteJob" )]
+      CIM_ConcreteJob REF Job,
+         [IN ( false ), OUT, Description ( 
+             "Error message ID part of the OSD message registry" )]
+      string MessageID,
+         [IN ( false ), OUT, Description ( 
+             "Description of error message in english part of the OSD message registry" )]
+      string Message,
+         [IN ( false ), OUT, Description ( 
+             "Substitution variables for the dynamic error messages" )]
+      string MessageArguments[]);
+
+      [Description ( "UnpackAndAttach(). This method will extract the drivers for "
+       "the selected Operating System to a USB device that will be attached locally "
+       "to the server for the specified time interval." ), 
+       ValueMap { "0", "1", "2", "4096"}, 
+       Values   { "Success", "Not Supported", "Failed", "Job Created"}]
+   uint32 UnpackAndAttach(
+         [IN, Description ( 
+             "Name of the Operating System to be deployed" )]
+      string OSName, 
+         [IN, Description ( 
+             "duration to expose the drivers" )]
+      datetime ExposeDuration,
+         [IN ( false ), OUT, Description ( 
+             "Reference to a CIM_ConcreteJob" )]
+      CIM_ConcreteJob REF Job,
+         [IN ( false ), OUT, Description ( 
+             "Error message ID part of the OSD message registry" )]
+      string MessageID,
+         [IN ( false ), OUT, Description ( 
+             "Description of error message in english part of the OSD message registry" )]
+      string Message,
+         [IN ( false ), OUT, Description ( 
+             "Substitution variables for the dynamic error messages" )]
+      string MessageArguments[]);
+
+      [Description ( "DetachDrivers. This method will detach the USB device containing "
+        "the drivers from the host server." ), 
+       ValueMap { "0",       "1",             "2"}, 
+       Values   { "Success", "Not Supported", "Failed"}]
+   uint32 DetachDrivers(
+         [IN ( false ), OUT, Description ( 
+             "Error message ID part of the OSD message registry" )]
+      string MessageID,
+         [IN ( false ), OUT, Description ( 
+             "Description of error message in english part of the OSD message registry" )]
+      string Message,
+         [IN ( false ), OUT, Description ( 
+             "Substitution variables for the dynamic error messages" )]
+      string MessageArguments[]);
+
+      [Description ( "DetachISOImage. This method will detach the ISO Image from the host server." ), 
+       ValueMap { "0", "1", "2"}, 
+       Values   { "Success", "Not Supported", "Failed"}]
+   uint32 DetachISOImage(
+         [IN ( false ), OUT, Description ( 
+             "Error message ID part of the OSD message registry" )]
+      string MessageID,
+         [IN ( false ), OUT, Description ( 
+             "Description of error message in english part of the OSD message registry" )]
+      string Message,
+         [IN ( false ), OUT, Description ( 
+             "Substitution variables for the dynamic error messages" )]
+      string MessageArguments[]);
+
+      [Description ( "BootToPXE. This method will reboot the host server and boots to PXE." ), 
+       ValueMap { "0",       "1",             "2",      "4096"}, 
+       Values   { "Success", "Not Supported", "Failed", "Job Created"}]
+   uint32 BootToPXE(
+         [IN ( false ), OUT, Description ( 
+             "Error message ID part of the OSD message registry" )]
+      string MessageID,
+         [IN ( false ), OUT, Description ( 
+             "Description of error message in english part of the OSD message registry" )]
+      string Message,
+         [IN ( false ), OUT, Description ( 
+             "Substitution variables for the dynamic error messages" )]
+      string MessageArguments[]);
+
+      [Description ( "UnpackAndShare. This method will extract the drivers for "
+       "the selected Operating System and copy them to the specified network share." ),
+       ValueMap { "0", "1", "2", "4096"}, 
+       Values   { "Success", "Not Supported", "Failed", "Job Created"}]
+   uint32 UnpackAndShare(
+         [IN, Description (
+             "Name of the Operating System to be deployed" )]
+      string OSName,
+         [IN, Description (
+             "IP address of the server on which the drivers will be copied" )]
+      string IPAddress,
+         [IN, Description (
+             "Share name of the server on which the drivers will be copied1" )]
+      string ShareName,
+         [IN, Description (
+             "Type of the share" ),
+             ValueMap { "0",   "1",    "2"}, 
+             Values   { "NFS", "TFTP", "CIFS" }]
+      uint16 ShareType,
+         [IN, Description (
+             "Username of the account to access the share" )]
+      string Username,
+         [IN, Description (
+             "Password of the account to access the share" )]
+      string Password,
+         [IN, Description (
+             "Workgroup of the account to access the share" )]
+      string Workgroup,
+         [IN ( false ), OUT, Description ( 
+             "Reference to a CIM_ConcreteJob" )]
+      CIM_ConcreteJob REF Job,
+         [IN ( false ), OUT, Description ( 
+             "Error message ID part of the OSD message registry" )]
+      string MessageID,
+         [IN ( false ), OUT, Description ( 
+             "Description of error message in english part of the OSD message registry" )]
+      string Message,
+         [IN ( false ), OUT, Description ( 
+             "Substitution variables for the dynamic error messages" )]
+      string MessageArguments[]);
+
+      [Description ( "BootToNetworkISO. This method will expose the ISO Image present on "
+       "network share as a CDROM device to the host server and boots to it." ),
+       ValueMap { "0", "1", "2", "4096"}, 
+       Values   { "Success", "Not Supported", "Failed", "Job Created"}]
+   uint32 BootToNetworkISO(
+         [IN, Description (
+             "IP address of the server that hosts the ISO Image" )]
+      string IPAddress,
+         [IN, Description (
+             "Share name of the server that hosts the ISO Image" )]
+      string ShareName,
+         [IN, Description (
+             "ISO Image name on the server" )]
+      string ImageName,
+         [IN, Description (
+             "Type of the share" ),
+             ValueMap { "0",   "2"}, 
+             Values   { "NFS", "CIFS" }]
+      uint16 ShareType,
+         [IN, Description (
+             "Username of the account to access the share" )]
+      string Username,
+         [IN, Description (
+             "Password of the account to access the share" )]
+      string Password,
+         [IN, Description (
+             "Workgroup of the account to access the share" )]
+      string Workgroup,
+         [IN, Description ( 
+             "Type of Hash algorithm used to compute checksum" ),
+             ValueMap { "1",   "2"}, 
+             Values   { "MD5", "SHA1" }]
+      uint16 HashType,
+         [IN, Description ( 
+             "Checksum value in string format computed using HashType algorithm" )]
+      string HashValue,
+         [IN, Description (
+             "duration to expose the ISO Image" )]
+      datetime ExposeDuration,
+         [IN ( false ), OUT, Description ( 
+             "Reference to a CIM_ConcreteJob" )]
+      CIM_ConcreteJob REF Job,
+         [IN ( false ), OUT, Description ( 
+             "Error message ID part of the OSD message registry" )]
+      string MessageID,
+         [IN ( false ), OUT, Description ( 
+             "Description of error message in english part of the OSD message registry" )]
+      string Message,
+         [IN ( false ), OUT, Description ( 
+             "Substitution variables for the dynamic error messages" )]
+      string MessageArguments[]);
+
+      [Description ( "GetHostMACInfo. This method will return the list of MAC Addresses "
+       "for all the network devices on the host server." ),
+       ValueMap { "0",       "1",             "2",      "4096"},
+       Values   { "Success", "Not Supported", "Failed", "Job Created"}]
+   uint32 GetHostMACInfo(
+         [IN ( false ), OUT, Description (
+             "Returns the list of MAC addressses for all the network devices on the Host" )]
+      string MACList[],
+         [IN ( false ), OUT, Description ( 
+             "Error message ID part of the OSD message registry" )]
+      string MessageID,
+         [IN ( false ), OUT, Description ( 
+             "Description of error message in english part of the OSD message registry" )]
+      string Message,
+         [IN ( false ), OUT, Description ( 
+             "Substitution variables for the dynamic error messages" )]
+      string MessageArguments[]);
+
+      [Description ( "DownloadISOToVFlash. This method will download the ISO Image "
+       "present on network share to VFlash." ),
+       ValueMap { "0",       "1",             "2",      "4096"}, 
+       Values   { "Success", "Not Supported", "Failed", "Job Created"}]
+   uint32 DownloadISOToVFlash(
+         [IN, Description (
+             "IP address of the server that hosts the ISO Image" )]
+      string IPAddress,
+         [IN, Description (
+             "Share name of the server that hosts the ISO Image" )]
+      string ShareName,
+         [IN, Description (
+             "ISO Image name on the server" )]
+      string ImageName,
+         [IN, Description (
+             "Type of the share" ),
+             ValueMap { "0",   "1",    "2"}, 
+             Values   { "NFS", "TFTP", "CIFS" }]
+      uint16 ShareType,
+         [IN, Description (
+             "Username of the account to access the share" )]
+      string Username,
+         [IN, Description (
+             "Password of the account to access the share" )]
+      string Password,
+         [IN, Description (
+             "Workgroup of the account to access the share" )]
+      string Workgroup,
+         [IN, Description ( 
+             "Type of Hash algorithm used to compute checksum" ),
+             ValueMap { "1",   "2"}, 
+             Values   { "MD5", "SHA1" }]
+      uint16 HashType,
+         [IN, Description (
+             "port number to be used" )]
+      uint16 Port,
+         [IN, Description ( 
+             "Checksum value in string format computed using HashType algorithm" )]
+      string HashValue,
+         [IN, Description (
+             "duration to expose the ISO Image" )]
+      datetime ExposeDuration,
+         [IN ( false ), OUT, Description ( 
+             "Reference to a CIM_ConcreteJob" )]
+      CIM_ConcreteJob REF Job,
+         [IN ( false ), OUT, Description ( 
+             "Error message ID part of the OSD message registry" )]
+      string MessageID,
+         [IN ( false ), OUT, Description ( 
+             "Description of error message in english part of the OSD message registry" )]
+      string Message,
+         [IN ( false ), OUT, Description ( 
+             "Substitution variables for the dynamic error messages" )]
+      string MessageArguments[]);
+
+      [Description ( "BootToISOFromVFlash. This method will expose the ISO Image present on VFlash as a CDROM device to the host server and boots to it." ),
+       ValueMap { "0",       "1",             "2",      "4096"}, 
+       Values   { "Success", "Not Supported", "Failed", "Job Created"}]
+   uint32 BootToISOFromVFlash(
+         [IN, Description (
+             "duration to expose the ISO Image" )]
+      datetime ExposeDuration,
+         [IN ( false ), OUT, Description ( 
+             "Reference to a CIM_ConcreteJob" )]
+      CIM_ConcreteJob REF Job,
+         [IN ( false ), OUT, Description ( 
+             "Error message ID part of the OSD message registry" )]
+      string MessageID,
+         [IN ( false ), OUT, Description ( 
+             "Description of error message in english part of the OSD message registry" )]
+      string Message,
+         [IN ( false ), OUT, Description ( 
+             "Substitution variables for the dynamic error messages" )]
+      string MessageArguments[]);
+
+      [Description ( "DetachISOFromVFlash. This method will detach the ISO Image from the host server." ), 
+       ValueMap { "0",       "1",             "2"}, 
+       Values   { "Success", "Not Supported", "Failed"}]
+   uint32 DetachISOFromVFlash(
+         [IN ( false ), OUT, Description ( 
+             "Error message ID part of the OSD message registry" )]
+      string MessageID,
+         [IN ( false ), OUT, Description ( 
+             "Description of error message in english part of the OSD message registry" )]
+      string Message,
+         [IN ( false ), OUT, Description ( 
+             "Substitution variables for the dynamic error messages" )]
+      string MessageArguments[]);
+
+      [Description ( "DeleteISOFromVFlash. This method will delete the ISO Image present on VFlash." ), 
+       ValueMap { "0",       "1",             "2"}, 
+       Values   { "Success", "Not Supported", "Failed"}]
+   uint32 DeleteISOFromVFlash(
+         [IN ( false ), OUT, Description ( 
+             "Error message ID part of the OSD message registry" )]
+      string MessageID,
+         [IN ( false ), OUT, Description ( 
+             "Description of error message in english part of the OSD message registry" )]
+      string Message,
+         [IN ( false ), OUT, Description ( 
+             "Substitution variables for the dynamic error messages" )]
+      string MessageArguments[]);
+ 
+
+      [Description ( "ConnectNetworkISOImage. This method will expose the ISO Image present on "
+       "network share as a CDROM device to the host server" ),
+       ValueMap { "0", "1", "2", "4096"}, 
+       Values   { "Success", "Not Supported", "Failed", "Job Created"}]
+   uint32 ConnectNetworkISOImage(
+         [IN, Description (
+             "IP address of the server that hosts the ISO Image" )]
+      string IPAddress,
+         [IN, Description (
+             "Share name of the server that hosts the ISO Image" )]
+      string ShareName,
+         [IN, Description (
+             "ISO Image name on the server" )]
+      string ImageName,
+         [IN, Description (
+             "Type of the share" ),
+             ValueMap { "0",   "2"}, 
+             Values   { "NFS", "CIFS" }]
+      uint16 ShareType,
+         [IN, Description (
+             "Username of the account to access the share" )]
+      string Username,
+         [IN, Description (
+             "Password of the account to access the share" )]
+      string Password,
+         [IN, Description (
+             "Workgroup of the account to access the share" )]
+      string Workgroup,
+         [IN, Description ( 
+             "Type of Hash algorithm used to compute checksum" ),
+             ValueMap { "1",   "2"}, 
+             Values   { "MD5", "SHA1" }]
+      uint16 HashType,
+         [IN, Description (
+             "Checksum value in string format computed using HashType algorithm" )]
+      string HashValue,
+         [IN, Description (
+             "Auto-connect to ISO Image upon iDRAC reset" )]
+          Boolean AutoConnect,
+         [IN ( false ), OUT, Description ( 
+             "Reference to a CIM_ConcreteJob" )]
+      CIM_ConcreteJob REF Job,
+         [IN ( false ), OUT, Description ( 
+             "Error message ID part of the OSD message registry" )]
+      string MessageID,
+         [IN ( false ), OUT, Description ( 
+             "Description of error message in english part of the OSD message registry" )]
+      string Message,
+         [IN ( false ), OUT, Description ( 
+             "Substitution variables for the dynamic error messages" )]
+      string MessageArguments[]);
+ 
+      [Description ( "DisconnectNetworkISOImage. This method will disconnect and detach the ISO Image from the host server." ), 
+       ValueMap { "0",       "1",             "2"}, 
+       Values   { "Success", "Not Supported", "Failed"}]
+   uint32 DisconnectNetworkISOImage(
+         [IN ( false ), OUT, Description ( 
+             "Error message ID part of the OSD message registry" )]
+      string MessageID,
+         [IN ( false ), OUT, Description ( 
+             "Description of error message in english part of the OSD message registry" )]
+      string Message,
+         [IN ( false ), OUT, Description ( 
+             "Substitution variables for the dynamic error messages" )]
+      string MessageArguments[]);
+
+      [Description ( "GetNetworkISOImageConnectionInfo. This method will give the status of the ISO Image that has been exposed to host." ), 
+       ValueMap { "0",       "1",             "2"}, 
+       Values   { "Success", "Not Supported", "Failed"}]
+   uint32 GetNetworkISOImageConnectionInfo(
+         [IN ( false ), OUT, Description (
+           "IP Address as specified in the ConnectNetworkISOImage method")]
+      string IPAddr,
+         [IN ( false ), OUT, Description (
+           "Share Name as specified in the ConnectNetworkISOImage method")]
+      string ShareName,
+         [IN ( false ), OUT, Description (
+           "ISO Image Name as specified in the ConnectNetworkISOImage method")]
+      string ImageName,
+         [IN ( false ), OUT, Description (
+           "User Name as specified in the ConnectNetworkISOImage method")]
+      string UserName,
+         [IN ( false ), OUT, Description (
+           "Workgroup as specified in the ConnectNetworkISOImage method")]
+      string Workgroup,
+         [IN ( false ), OUT, Description ( 
+             "Describes the session status" ),
+             ValueMap { "0",   "1"}, 
+             Values   { "Connection down", "Connection up" }]
+      uint8 ISOConnectionStatus,
+         [IN ( false ), OUT, Description ( 
+             "Describes ISO attached status" ),
+             ValueMap { "0",   "1"}, 
+             Values   { "Not Attached", "Attached" }]
+      uint8 HostAttachedStatus,
+         [IN ( false ), OUT, Description ( 
+             "Describes ISO boot status. If the ISO has been booted atleast once or not."),
+             ValueMap { "0",   "1"}, 
+             Values   { "No", "Yes" }]
+      uint8 HostBootedFromISO,
+         [IN ( false ), OUT, Description ( 
+             "Error message ID part of the OSD message registry" )]
+      string MessageID,
+         [IN ( false ), OUT, Description ( 
+             "Description of error message in english part of the OSD message registry" )]
+      string Message,
+         [IN ( false ), OUT, Description ( 
+             "Substitution variables for the dynamic error messages" )]
+      string MessageArguments[]);
+
+      [Description ( "SkipISOImageBoot. This method will allow BIOS to boot to the first device in boot list." ), 
+       ValueMap { "0",       "1",             "2"}, 
+       Values   { "Success", "Not Supported", "Failed"}]
+   uint32 SkipISOImageBoot(
+         [IN ( false ), OUT, Description ( 
+             "Error message ID part of the OSD message registry" )]
+      string MessageID,
+         [IN ( false ), OUT, Description ( 
+             "Description of error message in english part of the OSD message registry" )]
+      string Message,
+         [IN ( false ), OUT, Description ( 
+             "Substitution variables for the dynamic error messages" )]
+      string MessageArguments[]);
+};
+
+
+

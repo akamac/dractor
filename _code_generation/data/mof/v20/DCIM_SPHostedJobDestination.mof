@@ -1,0 +1,4 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+// Class: sp1 => DCIM_SPHostedJobDestination => DCIM_CLPJobQueue
+class DCIM_SPHostedJobDestination : CIM_HostedJobDestination
+{ };

@@ -1,0 +1,4 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+// class: clpsvc1 => DCIM_CLPElementSettingData => clpsetting1
+class DCIM_CLPElementSettingData : CIM_ElementSettingData
+{ };

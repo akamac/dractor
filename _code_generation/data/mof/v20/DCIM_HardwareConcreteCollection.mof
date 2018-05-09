@@ -1,0 +1,8 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+// ---------------------------------------------------------------------------
+// 	DCIM_HardwareConcreteCollection
+// ---------------------------------------------------------------------------
+// 
+class DCIM_HardwareConcreteCollection : CIM_ConcreteCollection
+{ 
+};

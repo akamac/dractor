@@ -1,0 +1,7 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+[Description(
+      "DCIM_Sensor is a derivation of "
+      "CIM_Sensor, and represents a sensor.")]
+class DCIM_Sensor : CIM_Sensor
+{
+};

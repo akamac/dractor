@@ -1,0 +1,9 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+[Description (
+       "DCIM_AggregationMetricValue is a derivation of "
+       "CIM_AggregationMetricValue and represents the instance "
+       "value of a metric defined by an instance of "
+       "DCIM_AggregationMetricDefinition." ) ]
+class DCIM_AggregationMetricValue : CIM_AggregationMetricValue
+{
+};

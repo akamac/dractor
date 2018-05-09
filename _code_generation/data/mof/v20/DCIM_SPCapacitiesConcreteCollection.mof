@@ -1,0 +1,12 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+// ==================================================================
+// DCIM_SPCapacitiesConcreteCollection
+// ==================================================================
+
+    [Description(
+        "DCIM_SPCapacitiesConcreteCollection is a"
+        "trivial derivation of CIM_ConcreteCollection") ]
+class DCIM_SPCapacitiesConcreteCollection : CIM_ConcreteCollection 
+{
+
+};

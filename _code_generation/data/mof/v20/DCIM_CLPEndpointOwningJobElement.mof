@@ -1,0 +1,4 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+// Class: DCIM_CLPProtocolEndpoint => DCIM_CLPEndpointOwningJobElement => DCIM_CLPConcreteJob
+class DCIM_CLPEndpointOwningJobElement : CIM_OwningJobElement
+{ };

@@ -1,0 +1,6 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+// ==================================================================
+// DCIM_CLPSettingData
+// ==================================================================
+class DCIM_CLPSettingData : CIM_CLPSettingData
+{ };

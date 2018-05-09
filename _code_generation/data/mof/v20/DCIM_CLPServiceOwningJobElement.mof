@@ -1,0 +1,4 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+// Class: clpsvc1 => DCIM_CLPServiceOwningJobElement => CIM_CLPCmdJob
+class DCIM_CLPServiceOwningJobElement : CIM_OwningJobElement
+{ };

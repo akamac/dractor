@@ -1,0 +1,524 @@
+// Copyright (c) 20010 Dell Inc.  All rights reserved.
+// ==================================================================
+// DCIM_LCService
+// ==================================================================
+  [Version ( "1.0.0" ), Description(
+       "DCIM_LCService is a derivation of CIM_BIOSService "
+       "with extrinsic method extensions to support "
+       "Lifecycle Controller functionality")]
+class DCIM_LCService : CIM_BIOSService {
+      [Experimental, Description ( 
+          "This method is called to modify instances of "
+          "LCAttribute associated with this LCService." ), 
+       ValueMap { "0", "1", "2", "3..32767", "32768..65535" }, 
+       Values { "Completed with No Error", "Not Supported", "Error", 
+          "DMTF Reserved", "Vendor Specified" }]
+   uint32 SetAttribute(
+         [Required, IN, Description ( 
+             "A reference to a LCAttribute specified by "
+             "AttributeName of the LCAttribute to be modified." )]
+      string AttributeName, 
+         [Required, IN, Description ( 
+             "A new value to assign to the specified "
+             "LCAttribute. If this value is valid, it will be "
+             "applied to the CurrentValue or PendingValue "
+             "property of the specified LCAttribute depending "
+             "on the Lifecycle Controller implementation and any "
+             "requirements for a system restart." )]
+      string AttributeValue[], 
+         [OUT, Description ( 
+             "Invoking the SetAttribute may result in a set "
+             "to CurrentValue property or the PendingValue "
+             "property. SetResult returns the result of invoking "
+             "the SetAttribute method when the method return "
+             "code is 0 completed with no error." ), 
+          ValueMap { "2", "3", "4..32767", "32768..65535" }, 
+          Values { "Set CurrentValue property", 
+             "Set PendingValue property", "DMTF Reserved", 
+             "Vendor Specified" }]
+      string SetResult,
+         [OUT, Description ( 
+             "Invoking the SetAttribute may require "
+             "a reboot for the set to be effective. "
+             "Value \"Yes\" means a reboot is required. "
+             "Value \"No\" means a reboot is not required")]
+      string RebootRequired, 
+         [OUT, Description ( 
+             "Error MessageID is returned if the method fails "
+             "to execute." )]
+      string MessageID,
+         [OUT, Description ( 
+             "Error Message in english corresponding to the "
+             "MessageID" )]
+      string Message,
+         [OUT, Description ( 
+             "Any dynamic string substitutions for the Message" )]
+      string MessageArguments[]);
+
+   uint32 SetAttributes(
+         [Required, IN, Description ( 
+             "A reference to a LCAttribute specified by "
+             "AttributeName of the LCAttribute to be modified." )]
+      string AttributeName[], 
+         [Required, IN, Description ( 
+             "A new value to assign to the specified "
+             "LCAttribute. If this value is valid, it will be "
+             "applied to the CurrentValue or PendingValue "
+             "property of the specified LCAttribute depending "
+             "on the Lifecycle Controller implementation and any "
+             "requirements for a system restart." )]
+      string AttributeValue[], 
+         [OUT, Description ( 
+             "Invoking the SetAttributes may result in a set "
+             "to CurrentValue property or the PendingValue "
+             "property. SetResult returns the result of invoking "
+             "the SetAttributes method when the method return "
+             "code is 0 completed with no error." ), 
+          ValueMap { "2", "3", "4..32767", "32768..65535" }, 
+          Values { "Set CurrentValue property", 
+             "Set PendingValue property", "DMTF Reserved", 
+             "Vendor Specified" }]
+      string SetResult[],
+         [OUT, Description ( 
+             "Invoking the SetAttribute may require "
+             "a reboot for the set to be effective. "
+             "Value \"Yes\" means a reboot is required. "
+             "Value \"No\" means a reboot is not required")]
+      string RebootRequired[], 
+         [OUT, Description ( 
+             "Error MessageID is returned if the method fails "
+             "to execute." )]
+      string MessageID,
+         [OUT, Description ( 
+             "Error Message in english corresponding to the "
+             "MessageID" )]
+      string Message,
+         [OUT, Description ( 
+             "Any dynamic string substitutions for the Message" )]
+      string MessageArguments[]);
+
+      [Experimental, Description ( 
+          "This method is called to reinitialize the Lifecycle "
+          "Controller to factory default settings with "
+          "auto discovery enabled." ), 
+       ValueMap { "0", "1", "2", "3..32767", "32768..65535" }, 
+       Values { "Completed with No Error", "Not Supported", "Error", 
+          "DMTF Reserved", "Vendor Specified" }]
+   uint32 ReInitiateDHS(
+   
+         [IN, Description ( 
+             "This is an optional parameter to specify "
+             "Provisioning Server addresses and ports "
+             "used for auto discovery, if omitted, the "
+             "Lifecycle Controller will get the value "
+             "from DHCP or DNS" )]
+      string ProvisioningServer, 
+      
+         [Required, IN, Description ( 
+             "If true, all configuration information is "
+             "replaced with auto discovery factory defaults. "
+             "If false, an error will be returned" )]
+      boolean ResetToFactoryDefaults,
+       
+         [Required, IN, Description ( 
+             "\"Off\" disables auto discovery, "
+             "\"Now\" enables and initiates auto discovery "
+             "immediately and "
+             "\"NextBoot\" will delay reconfiguration and "
+             "auto discovery until next powercycle." ), 
+          ValueMap { "1", "2", "3", "4..32767", "32768..65535" }, 
+          Values { "Off", "Now", "NextBoot", "DMTF Reserved", 
+                   "Vendor Specified" }]
+      uint16 PerformAutoDiscovery,
+      
+         [OUT, Description ( 
+             "Error MessageID is returned if the method fails "
+             "to execute." )]
+      string MessageID,
+      
+         [OUT, Description ( 
+             "Error Message in english corresponding to the "
+             "MessageID" )]
+      string Message,
+      
+         [OUT, Description ( 
+             "Any dynamic string substitutions for the Message" )]
+      string MessageArguments[]);
+
+      [Experimental, Description ( 
+          "This method is called to apply the pending values set "
+          "using the SetAttribute and SetAttributes methods" ), 
+       ValueMap { "0", "1", "2", "3..32767", "32768..65535" }, 
+       Values { "Completed with No Error", "Not Supported", "Error", 
+          "DMTF Reserved", "Vendor Specified" }]
+   uint32 CreateConfigJob(
+         [IN, Description ( 
+             "Scheduled start time for the job." )]
+      datetime ScheduledStartTime,
+         [IN, Description ( 
+             "a value of \"true\" will reboot the system if "
+             "reboot is required "
+             "a value of \"false\" will not reboot the system "
+             "if reboot is required" )]
+      boolean RebootIfRequired,
+         [OUT, Description ( 
+             "a reference to the ConcreteJob is returned" )]
+      CIM_ConcreteJob REF Job,
+         [OUT, Description ( 
+             "Error MessageID is returned if the method fails "
+             "to execute." )]
+      string MessageID,
+         [OUT, Description ( 
+             "Error Message in english corresponding to the "
+             "MessageID" )]
+      string Message,
+         [OUT, Description ( 
+             "Any dynamic string substitutions for the Message" )]
+      string MessageArguments[]);
+
+      [Experimental, Description ( 
+          "This method is called to clear the values for "
+          "provisioning server" ), 
+       ValueMap { "0", "1", "2", "3..32767", "32768..65535" }, 
+       Values { "Completed with No Error", "Not Supported", "Error", 
+          "DMTF Reserved", "Vendor Specified" }]
+   uint32 ClearProvisioningServer(
+         [OUT, Description ( 
+             "Error MessageID is returned if the method fails "
+             "to execute." )]
+      string MessageID,
+         [OUT, Description ( 
+             "Error Message in english corresponding to the "
+             "MessageID" )]
+      string Message,
+         [OUT, Description ( 
+             "Any dynamic string substitutions for the Message" )]
+      string MessageArguments[]);
+
+      [Experimental, Description ( 
+          "This method is called to replace the CA certificate "
+          "used to authenticate the auto discovery provisioning server" ),
+       ValueMap { "0", "1", "2", "3..32767", "32768..65535" }, 
+       Values { "Completed with No Error", "Not Supported", "Error", 
+          "DMTF Reserved", "Vendor Specified" }]
+   uint32 DownloadServerPublicKey(
+         [IN, Description ( 
+             "base64 encoded string containing the "
+             "CA certificate content" )]
+      string KeyContent,
+         [OUT, Description ( 
+             "a reference to the ConcreteJob is returned" )]
+      CIM_ConcreteJob REF Job,
+         [OUT, Description ( 
+             "Error MessageID is returned if the method fails "
+             "to execute." )]
+      string MessageID,
+         [OUT, Description ( 
+             "Error Message in english corresponding to the "
+             "MessageID" )]
+      string Message,
+         [OUT, Description ( 
+             "Any dynamic string substitutions for the Message" )]
+      string MessageArguments[]);
+
+      [Experimental, Description ( 
+          "This method is called to generate a client certificate "
+          "and private key using the provided CA certificate, "
+          "CA private key and CA password" ), 
+       ValueMap { "0", "1", "2", "3..32767", "32768..65535" }, 
+       Values { "Completed with No Error", "Not Supported", "Error", 
+          "DMTF Reserved", "Vendor Specified" }]
+   uint32 DownloadClientCerts(
+         [IN, Description ( 
+             "base64 encoded string containing "
+             "the CA private key content" )]
+      string KeyContent,
+         [IN, Description ( 
+             "CA private key password" )]
+      string Password,
+         [IN, Description ( 
+             "base64 encoded string containing "
+             "CA Certificate content" )]
+      string CAContent,
+         [OUT, Description ( 
+             "a reference to the ConcreteJob is returned" )]
+      CIM_ConcreteJob REF Job,
+         [OUT, Description ( 
+             "Error MessageID is returned if the method fails "
+             "to execute." )]
+      string MessageID,
+         [OUT, Description ( 
+             "Error Message in english corresponding to the "
+             "MessageID" )]
+      string Message,
+         [OUT, Description ( 
+             "Any dynamic string substitutions for the Message" )]
+      string MessageArguments[]);
+
+      [Experimental, Description ( 
+          "This method is called to delete the client certificates "
+          "previously downloaded" ), 
+       ValueMap { "0", "1", "2", "3..32767", "32768..65535" }, 
+       Values { "Completed with No Error", "Not Supported", "Error", 
+          "DMTF Reserved", "Vendor Specified" }]
+   uint32 DeleteAutoDiscoveryClientCerts(
+         [OUT, Description ( 
+             "Error MessageID is returned if the method fails "
+             "to execute." )]
+      string MessageID,
+         [OUT, Description ( 
+             "Error Message in english corresponding to the "
+             "MessageID" )]
+      string Message,
+         [OUT, Description ( 
+             "Any dynamic string substitutions for the Message" )]
+      string MessageArguments[]);
+
+      [Experimental, Description (
+           "This method is called to delete the server public key "
+           "previously downloaded"), 
+       ValueMap { "0", "1", "2", "3..32767", "32768..65535" }, 
+       Values { "Completed with No Error", "Not Supported", "Error", 
+          "DMTF Reserved", "Vendor Specified" }]
+   uint32 DeleteAutoDiscoveryServerPublicKey(
+         [OUT, Description ( 
+             "Error MessageID is returned if the method fails "
+             "to execute." )]
+      string MessageID,
+         [OUT, Description ( 
+             "Error Message in english corresponding to the "
+             "MessageID" )]
+      string Message,
+         [OUT, Description ( 
+             "Any dynamic string substitutions for the Message" )]
+      string MessageArguments[]);
+
+      [Experimental, Description (
+          "This method is called to wipe all configuration "
+          "from the Lifecycle controller before the system "
+          "is retired" ),
+       ValueMap { "0",       "1",             "2",      "4096"},
+       Values   { "Success", "Not Supported", "Failed", "Job Created"}]
+   uint32 LCWipe(
+         [OUT, Description ( 
+             "Error MessageID is returned if the method fails "
+             "to execute." )]
+      string MessageID,
+         [OUT, Description ( 
+             "Error Message in english corresponding to the "
+             "MessageID" )]
+      string Message,
+         [OUT, Description ( 
+             "Any dynamic string substitutions for the Message" )]
+      string MessageArguments[]);
+
+      [Experimental, Description ( 
+          "This method is called to insert a comment in "
+          "the Lifecycle controller." ), 
+       ValueMap { "0", "1", "2", "3..32767", "32768..65535" }, 
+       Values { "Completed with No Error", "Not Supported", "Error", 
+          "DMTF Reserved", "Vendor Specified" }]
+   uint32 InsertCommentInLCLog(
+         [IN, Description ( 
+             "Comment to be inserted in the Lifecycle Controller "
+             "log." )]
+      string Comment,
+         [OUT, Description ( 
+             "Error MessageID is returned if the method fails "
+             "to execute." )]
+      string MessageID,
+         [OUT, Description ( 
+             "Error Message in english corresponding to the "
+             "MessageID" )]
+      string Message,
+         [OUT, Description ( 
+             "Any dynamic string substitutions for the Message" )]
+      string MessageArguments[]);
+
+      [Description ( 
+             "This method is called to export the "
+             "Lifecycle Controller log to a network share"),
+       ValueMap { "0",       "1",             "2",      "4096"}, 
+       Values   { "Success", "Not Supported", "Failed", "Job Created"}]
+   uint32 ExportLCLog(
+         [IN, Description (
+             "IP address of the network share" )]
+      string IPAddress,
+         [IN, Description (
+             "netowrk share name" )]
+      string ShareName,
+         [IN, Description (
+             "File Name" )]
+      string FileName,
+         [IN, Description (
+             "Type of the share" ),
+             ValueMap { "0",   "2"},
+             Values   { "NFS", "CIFS" }]
+      uint16 ShareType,
+         [IN, Description (
+             "Username of the account to access the share" )]
+      string Username,
+         [IN, Description (
+             "Password of the account to access the share" )]
+      string Password,
+         [IN, Description (
+             "Workgroup of the account to access the share" )]
+      string Workgroup,
+         [OUT, Description (
+             "a reference to the ConcreteJob is returned" )]
+      CIM_ConcreteJob REF Job,
+         [OUT, Description (
+             "Error MessageID is returned if the method fails "
+             "to execute." )]
+      string MessageID,
+         [OUT, Description (
+             "Error Message in english corresponding to the "
+             "MessageID" )]
+      string Message,
+         [OUT, Description (
+             "Any dynamic string substitutions for the Message" )]
+      string MessageArguments[]);
+
+      [Experimental, Description (
+             "This method is called to update iDRAC certificate and "
+             "private key pairs using the contents of a PKCS#12 "
+             "file."),
+       ValueMap { "0",       "1",             "2"},
+       Values   { "Success", "Not Supported", "Failed"}]
+   uint32 SetCertificateAndPrivateKey(
+         [Required, IN, Description (
+             "This parameter specifies the service the certificate is "
+             "for.  The value server is used for the iDRAC web server." )]
+      string Type,
+         [Required, IN, Description (
+             "An input parameter that represents the Base64 encoded "
+             "contents of PKCS#12 file to upload.  Note this is the "
+             "contents of the file and not a filename.")]
+      string PKCS12,
+         [Required, IN, Description (
+             "Password to decode the PKCS12")]
+      string PKCS12pin,
+         [OUT, Description (
+             "Error MessageID is returned if the method fails "
+             "to execute." )]
+      string MessageID,
+         [OUT, Description (
+             "Error Message in english corresponding to the "
+             "MessageID" )]
+      string Message,
+         [OUT, Description (
+             "Any dynamic string substitutions for the Message" )]
+      string MessageArguments[]);
+
+      [Experimental, Description (
+             "This method is called to update a public SSL Certificate "
+             "on the iDRAC."),
+       ValueMap { "0",       "1",             "2"},
+       Values   { "Success", "Not Supported", "Failed"}]
+   uint32 SetPublicCertificate(
+         [Required, IN, Description (
+	    "This parameter specifies the service the certificate is "
+	    "for.  The value directoryCA is used for the Active "
+	    "Directory or LDAP CA certificate.")]
+      string Type,
+         [Required, IN, Description (
+	    "An input parameter that represents the certificate to "
+	    "upload.  The certificate must be in X509 format and Base64 "
+	    "encoded.")]
+      string Certificate,
+         [OUT, Description (
+             "Error MessageID is returned if the method fails "
+             "to execute." )]
+      string MessageID,
+         [OUT, Description (
+             "Error Message in english corresponding to the "
+             "MessageID" )]
+      string Message,
+         [OUT, Description (
+             "Any dynamic string substitutions for the Message" )]
+      string MessageArguments[]);
+
+      [Description (
+             "This method is called to export the "
+             "Hardware Inventory to a network share"),
+       ValueMap { "0",       "1",             "2",      "4096"},
+       Values   { "Success", "Not Supported", "Failed", "Job Created"}]
+   uint32 ExportHWInventory(
+         [IN, Description (
+             "IP address of the network share" )]
+      string IPAddress,
+         [IN, Description (
+             "Network share name" )]
+      string ShareName,
+         [IN, Description (
+             "File Name" )]
+      string FileName,
+         [IN, Description (
+             "Type of the share" ),
+             ValueMap { "0",   "2"},
+             Values   { "NFS", "CIFS" }]
+      uint16 ShareType,
+         [IN, Description (
+             "Username of the account to access the share" )]
+      string Username,
+         [IN, Description (
+             "Password of the account to access the share" )]
+      string Password,
+         [IN, Description (
+             "Workgroup of the account to access the share" )]
+      string Workgroup,
+         [OUT, Description (
+             "a reference to the ConcreteJob is returned" )]
+      CIM_ConcreteJob REF Job,
+         [OUT, Description (
+             "Error MessageID is returned if the method fails "
+             "to execute." )]
+      string MessageID,
+         [OUT, Description (
+             "Error Message in english corresponding to the "
+             "MessageID" )]
+      string Message,
+         [OUT, Description (
+             "Any dynamic string substitutions for the Message" )]
+      string MessageArguments[]);
+
+      [Description (
+         "This method is called to export the factory configuration "
+         "from the Lifecycle Controller to a file on a remote share"),
+       ValueMap { "0",       "1",             "2",      "4096"},
+       Values   { "Success", "Not Supported", "Failed", "Job Created"}]
+   uint32 ExportFactoryConfiguration(
+         [IN, Description ("IP address of the network share")]
+      string IPAddress,
+         [IN, Description ("Network share name")]
+      string ShareName,
+         [IN, Description ("File Name")]
+      string FileName,
+         [IN, Description ("Type of the share"),
+             ValueMap { "0",   "2"},
+             Values   { "NFS", "CIFS" }]
+      uint16 ShareType,
+         [IN, Description ("Username of the account to access the share")]
+      string Username,
+         [IN, Description ("Password of the account to access the share")]
+      string Password,
+         [IN, Description ("Workgroup of the account to access the share")]
+      string Workgroup,
+         [OUT, Description ("a reference to the ConcreteJob is returned")]
+      CIM_ConcreteJob REF Job,
+         [OUT, Description (
+             "Error MessageID is returned if the method fails "
+             "to execute." )]
+      string MessageID,
+         [OUT, Description (
+             "Error Message in english corresponding to the "
+             "MessageID" )]
+      string Message,
+         [OUT, Description (
+             "Any dynamic string substitutions for the Message" )]
+      string MessageArguments[]);
+
+};
+     
+
+

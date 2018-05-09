@@ -1,0 +1,4 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+// CLass: clpjobq1 => DCIM_JobDestinationJobs => DCIM_CLPConcreteJob
+class DCIM_CLPJobDestinationJobs : CIM_JobDestinationJobs
+{ };

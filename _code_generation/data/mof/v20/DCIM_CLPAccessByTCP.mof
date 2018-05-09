@@ -1,0 +1,5 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+// class: clpsvc1 => DCIM_CLPAccessByTCP => tcpendpt
+[Association]
+class DCIM_CLPAccessByTCP : CIM_ServiceAccessBySAP
+{ };

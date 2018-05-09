@@ -1,0 +1,4 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+// Class: clpsvc1 => DCIM_CLPProvidesEndpoint => DCIM_CLPProtocolEndpoint
+class DCIM_CLPProvidesEndpoint : CIM_ProvidesEndpoint
+{ };

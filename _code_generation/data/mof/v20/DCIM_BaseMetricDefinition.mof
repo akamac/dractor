@@ -1,0 +1,8 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+[Description(
+      "DCIM_CumBaseMetricDefinition is a derivation of "
+      "CIM_BaseMetricDefinition and represents the definitional "
+      "aspects of a metric.")]
+class DCIM_BaseMetricDefinition : CIM_BaseMetricDefinition
+{
+};

@@ -1,0 +1,10 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+// ==================================================================
+// DCIM_SPCapabilitiesMemberOfCollection
+// ==================================================================
+
+    [Association, Description(
+        "DCIM_SPCapabilitiesMemberOfCollection is a"
+        "trivial derivation of CIM_MemberOfCollection") ]
+class DCIM_SPCapabilitiesMemberOfCollection : CIM_MemberOfCollection 
+{};

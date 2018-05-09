@@ -1,0 +1,8 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+[Description(
+      "DCIM_PSNumericSensor is a derivation of "
+      "DCIM_NumericSensor, and represents a Power Sensor.")]
+class DCIM_PSNumericSensor: DCIM_NumericSensor
+{
+};
+

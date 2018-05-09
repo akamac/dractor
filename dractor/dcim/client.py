@@ -28,7 +28,9 @@ from dractor.dcim.base import DCIMFactory, DCIMMethodObject, DCIMAttributeObject
 from dractor.exceptions import DCIMClientException, UnsupportedLCVersion
 
 DCIM_VERSION_MAP = {
+    '1.4.0': 'dractor.dcim.v14',
     '1.5.0': 'dractor.dcim.v15',
+    '2.0.0': 'dractpr.dcim.v20',
     '2.1.0': 'dractor.dcim.v21',
     '2.10.10.10': 'dractor.dcim.v2101010',
     '2.30.30.30': 'dractor.dcim.v2303030',

@@ -1,0 +1,6 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+// ==================================================================
+// DCIM_CLPJobQueue
+// ==================================================================
+class DCIM_CLPJobQueue : CIM_JobQueue
+{ };

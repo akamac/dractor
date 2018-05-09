@@ -1,0 +1,102 @@
+// Copyright (c) 2010 Dell Inc.  All rights reserved.
+// ==================================================================
+// DCIM_NICView
+// ==================================================================
+   [Description(
+       "DCIM_NICView is a derivation of DCIM_View "
+       "with NIC specific data" )]
+class DCIM_NICView : DCIM_View {
+      [Key, Description (
+          "Is a unique string containing the Fully Qualified Device "
+          "Description and view name. ")]
+   string InstanceID;
+
+      [Description (
+          "A string containing the Fully Qualified Device Description"
+          "A user-friendly name for the object. This property allows each"
+          " instance to define a user-friendly name in addition to its key"
+          " properties, identity data, and description information."
+          )]
+   string  FQDD;
+
+      [Description (
+          "A string containing the NIC's product name"),
+          MaxLen ( 256 )]
+   string ProductName;
+
+      [Description (
+          "A string containing the Current MAC address"
+          "The principal unicast address used in "
+          "communication with the NIC. The MAC address"
+          "is formatted as twelve hexadecimal digits "
+          "(e.g., \"010203040506\"), with each pair "
+          "representing one of the six octets of the MAC address"
+          " in \"canonical\" bit order according to RFC 2469"), 
+       MaxLen ( 12 )]
+   string CurrentMACAddress;
+
+      [Description ( 
+          "PermanentAddress defines the network address that is "
+          "hardcoded into a port. This \'hardcoded\' address can be "
+          "changed using a firmware upgrade or a software "
+          "configuration. When this change is made, the field "
+          "should be updated at the same time. PermanentAddress "
+          "should be left blank if no \'hardcoded\' address exists "
+          "for the NetworkAdapter." ), 
+       MaxLen ( 64 ), 
+       MappingStrings { "MIF.DMTF|Network Adapter 802 Port|001.2" }]
+   string PermanentMACAddress;
+
+      [Description ( 
+          "The bus number where this NIC resides")]
+   uint8 BusNumber;
+
+      [Description (
+          "The device number assigned to this NIC for this bus. ")]
+   uint8 DeviceNumber;
+
+      [Description (
+          "The function number for this NIC. ")]
+   uint8 FunctionNumber;
+
+     [Description (
+         "Register that contains a value assigned by the PCI SIG "
+         "used to identify the manufacturer of the NIC. ")]
+   string PCIVendorID;
+
+     [Description (
+         "Subsystem vendor ID. ID information is reported from a "
+         "PCIDevice through protocol-specific requests. ")]
+   string PCISubVendorID;
+
+     [Description (
+         "Register that contains a value assigned by the device "
+         "manufacturer used to identify the type of NIC. ")]
+   string PCIDeviceID;
+
+     [Description (
+         "PCI sub device ID")]
+   string PCISubDeviceID;
+
+     [Description (
+         "PermanentiSCSIMACAddress defines the network address that is "
+         "hardcoded into a port and dedicated to iSCSI usage. " ),
+      MaxLen ( 64 )]
+   string PermanentiSCSIMACAddress;
+
+      [Description ("PCI DataBusWidth for the NIC. Refer to System"
+              "Management BIOS (SMBIOS) Reference Specification"
+              "3.3.10.2 for values and their meaning")]
+   string DataBusWidth;
+
+      [Description ("PCI SlotLength for the NIC. Refer to System"
+              "Management BIOS (SMBIOS) Reference Specification"
+              "3.3.10.4 for values and their meaning")]
+   string SlotLength;
+
+      [Description ("PCI SlotType for the NIC. Refer to System"
+              "Management BIOS (SMBIOS) Reference Specification"
+              "3.3.10.1 for values and their meaning")]
+   string SlotType;
+};
+

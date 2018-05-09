@@ -1,0 +1,15 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+
+class DCIM_LCRegisteredProfile : CIM_RegisteredProfile
+{
+      [Description ( 
+          "This property contains the list of license bits required by "
+	  "this profile to enable all functionality in the profile." )]
+   string ProfileRequireLicense[];
+      [Description ( 
+          "This property contains the installed status of license bits "
+	  "listed in ProfileRequireLicense property, each element in "
+	  "the array either contains a value of \"LICENSED\" or "
+	  "\"NOT_LICENSED\"" )]
+   string ProfileRequireLicenseStatus[];
+};

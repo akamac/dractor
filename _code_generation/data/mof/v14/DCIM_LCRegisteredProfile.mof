@@ -1,0 +1,10 @@
+// Copyright (c) 2010 Dell Inc.  All rights reserved.
+// ==================================================================
+// DCIM_LCRegisteredProfile
+// ==================================================================
+  [Version ( "1.0.0" ), Description(
+       "DCIM_LCRegisteredProfile is a trivial derivation of "
+       "CIM_RegisteredProfile " )]
+class DCIM_LCRegisteredProfile : CIM_RegisteredProfile
+{
+};

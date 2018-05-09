@@ -1,0 +1,10 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+// ==================================================================
+// DCIM_PowerRedundancySet 
+// ==================================================================  
+[
+       Description ("DCIM_PowerRedundancySet is a derivation of  "
+       "CIM_RedundancySet. " ) ]
+class DCIM_PowerRedundancySet : CIM_RedundancySet 
+{   
+};

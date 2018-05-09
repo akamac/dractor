@@ -1,0 +1,7 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+class DCIM_Chassis : CIM_Chassis
+{
+     [Description (
+          "This is 3 digit identification number unique to Dell")]
+  uint16 SystemID;
+};

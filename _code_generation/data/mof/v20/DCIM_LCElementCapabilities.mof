@@ -1,0 +1,13 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+// ==================================================================
+//  DCIM_LCElementCapabilities
+// ==================================================================
+[Association, Description (
+       "An association class derived from ElementCapabilities "        
+       "that represents the association between the LifeCycle Log "
+       "Capabilities and the LifeCycle Log." ) ]
+class DCIM_LCElementCapabilities : CIM_ElementCapabilities
+{
+	
+};
+

@@ -1,0 +1,4 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+// class: sp1 => DCIM_HostedTCPAccessPoint => tcpendpt
+class DCIM_HostedTCPAccessPoint : CIM_HostedAccessPoint
+{ };

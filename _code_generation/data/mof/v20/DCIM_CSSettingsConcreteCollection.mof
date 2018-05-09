@@ -1,0 +1,12 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+// ==================================================================
+// DCIM_CSSettingsConcreteCollection
+// ==================================================================
+
+    [Description(
+        "DCIM_CSSettingsConcreteCollection is a"
+        "trivial derivation of CIM_ConcreteCollection") ]
+class DCIM_CSSettingsConcreteCollection : CIM_ConcreteCollection 
+{
+
+};

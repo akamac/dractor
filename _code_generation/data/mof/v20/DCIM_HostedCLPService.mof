@@ -1,0 +1,8 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+// ---------------------------------------------------------------------------
+//     DCIM_HostedCLPService
+// ---------------------------------------------------------------------------
+// 
+class DCIM_HostedCLPService:CIM_HostedService
+{
+};

@@ -1,0 +1,8 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+[Association, Description (
+       "DCIM_BMElementCapabilities is a derivation of CIM_ElementCapabilities "
+       "and represents an association between ManagedElements and their "
+       "Capabilites." ) ]
+class DCIM_BMElementCapabilities : CIM_ElementCapabilities
+{
+};

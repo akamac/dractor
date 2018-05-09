@@ -1,0 +1,8 @@
+// Copyright (c) 2012 Dell Inc.  All rights reserved. 
+[Description (
+       "DCIM_MetricServiceCapabilities is a derivation of "
+       "CIM_MetricServiceCapabilities and describes the capabilities "
+       "of the associated DCIM_MetricService." ) ]
+class DCIM_MetricServiceCapabilities : CIM_MetricServiceCapabilities
+{
+};

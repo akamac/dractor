@@ -1,0 +1,90 @@
+// Copyright (c) 2009 Dell Inc.  All rights reserved.
+// ==================================================================
+// DCIM_JobService
+// ==================================================================
+  [Version ( "1.0.0" ),Description(
+    "DCIM_JobService is a Dell Job Control Class.This " 
+    "class provides job schedule and delete methods. ")]
+class DCIM_JobService: CIM_Service {
+      [Description ("SetupJobQueue method is used for creating "
+      "a job queue that will contain one or more "
+      "DCIM_LyfecycleJobs with a specified order of execution "
+      "within the queue. "),
+       ValueMap { "0","2" }, 
+       Values   { "Success","Failed"}]
+  uint32 SetupJobQueue(
+        [IN,Description( 
+         "Array containing the value of the InstanceID property "
+         "of the instances of DCIM_LifeCycleJob that represent "
+         "the set of jobs to add to the job queue.  This is an "
+         "ordered array that represents the sequence in which "
+         "to execute the jobs. ")]
+           string JobArray[], 
+        [IN , Description(
+          "Scheduled StartTime of a job in datetime format " 
+          "yyyymmddhhmmss. The string \"TIME_NOW\" means immediate.")]
+      string StartTimeInterval,
+        [IN ,Description(
+          "Scheduled EndTime of a job in datetime format "
+          "yyyymmddhhmmss. ")]
+      string UntilTime,
+        [IN(false),OUT,Description (
+             "Error MessageID is returned if the method fails "
+             "to execute." )]
+      string MessageID,
+        [IN(false ), OUT, Description (
+             "Error Message in english corresponding to the "
+             "MessageID" )]
+      string Message,
+        [IN(false),OUT,Description (
+             "Any dynamic string substitutions for the Message" )]
+      string MessageArguments[]);
+      
+     [Description ("DeleteJobQueue is used for deleting one or "
+       "all jobs from the JobQueue (or job store). " )]
+  uint32 DeleteJobQueue(
+        [IN,Description(
+          "The InstanceID property of the instances of "
+          "DCIM_LifeCycleJob that represent the job to be "
+          "deleted or predefined jobid value(JID_CLEARALL) " 
+          "to delete all jobs in jobstore. ")]
+       string JobID,
+        [IN(false),OUT,Description (
+             "Error MessageID is returned if the method fails "
+             "to execute and can be used to index into Dell "
+             "Message registry files." )]
+       string MessageID,
+         [IN(false ), OUT, Description (
+             "Error Message in english corresponding to the "
+             "MessageID" )]
+       string Message,
+         [IN(false),OUT,Description (
+             "Any dynamic string substitutions for the Message" )]
+       string MessageArguments[]);
+       
+     [Description ("CreateRebootJob method is used for "
+       "creating a reboot job. " )]
+  uint32 CreateRebootJob(
+        [IN, Description(
+           "Input Parameter represents the type of Reboot "
+           "1 - PowerCycle "
+           "2 - Graceful Reboot without forced shutdown "
+           "3 - Graceful Reboot with forced shutdown. "),
+       ValueMap { "1", "2", "3" },
+       Values { "PowerCycle", 
+               "Graceful Reboot without forced shutdown", 
+               "Graceful Reboot with forced shutdown" }]
+       uint16 RebootJobType,
+        [IN(false),OUT,Description (
+             "Error MessageID is returned if the method fails "
+             "to execute and can be used to index into Dell "
+             "Message registry files." )]
+       string MessageID,
+         [IN(false ), OUT, Description (
+             "Error Message in english corresponding to the "
+             "MessageID" )]
+       string Message,
+         [IN(false),OUT,Description (
+             "Any dynamic string substitutions for the Message" )]
+       string MessageArguments[]);
+};
